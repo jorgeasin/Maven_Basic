@@ -7,6 +7,9 @@ public class Programame {
 
 	public List<String> problemaA(List<String> entrada) {
 		ArrayList salida = null;
+		for (int i = 0; i < entrada.size(); i++) {
+			salida.add(entrada.get(i));
+		}
 		return salida;
 	}
 
