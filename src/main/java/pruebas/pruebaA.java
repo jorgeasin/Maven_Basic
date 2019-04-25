@@ -6,6 +6,7 @@ import java.util.List;
 
 public class pruebaA {
 	static List<String> result;
+
 	public static void main(String[] args) {
 		Programame pro = new Programame();
 		result = new ArrayList<>(Arrays.asList("5", "5 + -13", "10 / 2", "7 * 3", "3 / 0", "5 - 13"));

@@ -23,8 +23,6 @@ public class Programame {
 				indi++;
 			}
 			num[indi] = entrada.get(i).substring(x, entrada.get(i).length());
-
-
 			if (num[1].equals("+"))
 				salida.add("" +(Integer.parseInt(num[0]) + Integer.parseInt(num[2])));
 			if (num[1].equals("-"))
