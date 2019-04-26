@@ -8,6 +8,10 @@ public class Programame {
 
 	public List<String> problemaA(List<String> entrada) {
 		salida = new ArrayList<>();
+		if (entrada.size() < 1) {
+			salida.add("ERROR");
+			return salida;
+		}
 		int n_Operaciones = Integer.parseInt(entrada.get(0));
 		for (int i = 1; i <= n_Operaciones; i++) {
 			int z = entrada.get(i).indexOf(" ", 0);
