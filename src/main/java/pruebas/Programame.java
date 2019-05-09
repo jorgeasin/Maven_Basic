@@ -19,9 +19,9 @@ public class Programame {
 			int x = 0;
 			String num[];
 			num = new String[3];
-			int indi=0;
+			int indi = 0;
 			while (z != -1) {
-				num[indi]=(entrada.get(i).substring(x, z));
+				num[indi] = (entrada.get(i).substring(x, z));
 				x = z + 1;
 				z = x;
 				z = entrada.get(i).indexOf(" ", z);
@@ -29,7 +29,7 @@ public class Programame {
 			}
 			num[indi] = entrada.get(i).substring(x, entrada.get(i).length());
 			if (num[1].equals("+"))
-				salida.add("" +(Integer.parseInt(num[0]) + Integer.parseInt(num[2])));
+				salida.add("" + (Integer.parseInt(num[0]) + Integer.parseInt(num[2])));
 			if (num[1].equals("-"))
 				salida.add("" + (Integer.parseInt(num[0]) - Integer.parseInt(num[2])));
 			if (num[1].equals("*"))
@@ -53,8 +53,8 @@ public class Programame {
 		int n_Operaciones = Integer.parseInt(entrada.get(0));
 		for (int i = 1; i <= n_Operaciones; i++) {
 			List<String> palabraLimpia = new ArrayList<>();
-			int x=0;
-			int y=1;
+			int x = 0;
+			int y = 1;
 			for (int j = 0; j < entrada.get(i).length(); j++) {
 				if (!comprovar(entrada.get(i).substring(x, y)))
 					palabraLimpia.add((entrada.get(i).substring(x, y).toLowerCase()));
@@ -83,9 +83,34 @@ public class Programame {
 		return salida;
 	}
 
-
 	public List<String> problemaC(List<String> entrada) {
-		ArrayList salida = null;
+		salida = new ArrayList<>();
+		if (entrada.size() < 1) {
+			salida.add("ERROR");
+			return salida;
+		}
+
+		int n_Operaciones = Integer.parseInt(entrada.get(0));
+		for (int i = 1; i <= n_Operaciones; i++) {
+			List<String> almacenPrimos = new ArrayList<>();
+			int numMax = Integer.parseInt(entrada.get(i));
+			for (int j = numMax; j > 9; j--) {
+				Boolean primo = true;
+				for (int x = 2; x < j; x++)
+					if (j % x == 0) {
+						primo = false;
+						break;
+					}
+				if (primo)
+					almacenPrimos.add("" + j);
+			}
+			int cont = 0;
+			for (int j = 0; j < almacenPrimos.size(); j++) {
+				if (almacenPrimos.get(j).substring(0, 1).equals("1"))
+					cont++;
+			}
+			salida.add("" + cont);
+		}
 		return salida;
 	}
 
