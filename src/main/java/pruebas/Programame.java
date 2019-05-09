@@ -120,8 +120,57 @@ public class Programame {
 	}
 
 	public List<String> problemaE(List<String> entrada) {
-		ArrayList salida = null;
+		salida = new ArrayList<>();
+		if (entrada.size() < 1) {
+			salida.add("ERROR");
+			return salida;
+		}
+
+		int n_Operaciones = Integer.parseInt(entrada.get(0));
+		for (int i = 1, i2 = 1; i <= n_Operaciones; i++) {
+			salida.add("Caso " + i + ":");
+			int oxigeno = Integer.parseInt(entrada.get(i2));
+			int n_Naves = Integer.parseInt(entrada.get(i2 + 1));
+			int valores[][] = new int[n_Naves][2];
+			for (int j = 0; j < n_Naves; j++) {
+				valores[j][0] = Integer
+						.parseInt(entrada.get(j + i2 + 2).substring(0, entrada.get(j + i2 + 2).indexOf(" ")));
+				valores[j][1] = Integer.parseInt(entrada.get(j + i2 + 2)
+						.substring(entrada.get(j + i2 + 2).indexOf(" ") + 1, entrada.get(j + i2 + 2).length()));
+			}
+
+			for (int x = 0; x < (valores.length - 1); x++) {
+				for (int j = x + 1; j < valores.length; j++) {
+					if (valores[x][1] > valores[j][1]) {
+						int variableauxiliar1 = valores[x][1];
+						int variableauxiliar0 = valores[x][0];
+						valores[x][1] = valores[j][1];
+						valores[x][0] = valores[j][0];
+						valores[j][1] = variableauxiliar1;
+						valores[j][0] = variableauxiliar0;
+					}
+				}
+			}
+			for (int x = valores.length - 1; x < 0; x--) {
+				for (int j = valores.length; j < x - 1; j--) {
+					if (valores[j][0] > oxigeno && valores[j][0] > valores[x][0]) {
+						int variableauxiliar1 = valores[x][1];
+						int variableauxiliar0 = valores[x][0];
+						valores[x][1] = valores[j][1];
+						valores[x][0] = valores[j][0];
+						valores[j][1] = variableauxiliar1;
+						valores[j][0] = variableauxiliar0;
+					}
+				}
+			}
+
+			for (int j = 0; j < valores.length; j++)
+				salida.add(valores[j][0] + " " + valores[j][1]);
+			i2 += n_Naves + 2;
+
+		}
 		return salida;
+
 	}
 
 	private boolean comprovar(String letra) {
