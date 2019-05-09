@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Programame {
 	List<String> salida;
+	String vocales[] = { "a", "A", "e", "E", "i", "I", "o", "O", "u", "U" };
 
 	public List<String> problemaA(List<String> entrada) {
 		salida = new ArrayList<>();
@@ -44,9 +45,44 @@ public class Programame {
 	}
 
 	public List<String> problemaB(List<String> entrada) {
-		ArrayList salida = null;
+		salida = new ArrayList<>();
+		if (entrada.size() < 1) {
+			salida.add("ERROR");
+			return salida;
+		}
+		int n_Operaciones = Integer.parseInt(entrada.get(0));
+		for (int i = 1; i <= n_Operaciones; i++) {
+			List<String> palabraLimpia = new ArrayList<>();
+			int x=0;
+			int y=1;
+			for (int j = 0; j < entrada.get(i).length(); j++) {
+				if (!comprovar(entrada.get(i).substring(x, y)))
+					palabraLimpia.add((entrada.get(i).substring(x, y).toLowerCase()));
+				x += 1;
+				y += 1;
+
+			}
+
+			String letra = palabraLimpia.get(0);
+			Boolean ordenada = true;
+			if (palabraLimpia.size() > 1)
+				for (int j = 1; j < palabraLimpia.size(); j++) {
+					if (letra.compareTo(palabraLimpia.get(j)) > 0) {
+						ordenada = false;
+					}
+					letra = palabraLimpia.get(j);
+
+				}
+			if (ordenada)
+				salida.add("ERROR");
+			else
+				salida.add("OK");
+		}
+//			
+
 		return salida;
 	}
+
 
 	public List<String> problemaC(List<String> entrada) {
 		ArrayList salida = null;
@@ -63,4 +99,12 @@ public class Programame {
 		return salida;
 	}
 
+	private boolean comprovar(String letra) {
+		for (int i = 0; i < vocales.length; i++) {
+			if (letra.equals(vocales[i]))
+				return true;
+		}
+		return false;
+
+	}
 }
