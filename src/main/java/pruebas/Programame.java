@@ -151,9 +151,9 @@ public class Programame {
 					}
 				}
 			}
-			for (int x = valores.length - 1; x < 0; x--) {
-				for (int j = valores.length; j < x - 1; j--) {
-					if (valores[j][0] > oxigeno && valores[j][0] > valores[x][0]) {
+			for (int x = valores.length - 1; x > 0; x--) {
+				for (int j = x - 1; j > -1; j--) {
+					if (valores[x][0] >= oxigeno && valores[x][0] > valores[j][0]) {
 						int variableauxiliar1 = valores[x][1];
 						int variableauxiliar0 = valores[x][0];
 						valores[x][1] = valores[j][1];
